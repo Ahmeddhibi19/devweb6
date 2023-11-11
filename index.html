@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css" /> <!-- Lien vers la feuille de style CSS -->
+    <script src="jQueryAssets/jquery-1.11.1.min.js"></script> <!-- Inclusion de jQuery -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> <!-- Inclusion de jQuery UI -->
+    <script src="jQueryAssets/index.js"></script> <!-- Inclusion d'un script JavaScript personnalisé -->
+
+    <title>Gestionnaire de contacts</title> <!-- Titre de la page -->
+</head>
+
+<body>
+    <header>
+        <h1 class="rotate-on-hover">Gestionnaire de contacts</h1> <!-- Titre principal de la page avec une classe pour l'effet de rotation au survol -->
+    </header>
+    
+    <section>
+        <article id="formContacts">
+            <header>
+                <h1>Ajout d'un contact</h1>
+            </header>
+            <details>
+                <summary>
+                    Cliquer pour voir le formulaire.
+                </summary>
+                <form method="post">
+                    <fieldset>
+                        <legend>Nouveau contact</legend> <!-- Légende du formulaire -->
+                        <label>
+                            <span>Nom :</span>
+                            <input type="text" name="nom" required maxlength="32" pattern="^[^%&$]*$" > <!-- Champ de saisie pour le nom ne contien pas % & $ -->
+                        </label>
+                        <label>
+                            <span>Prénom :</span>
+                            <input type="text" name="prenom" required maxlength="32" pattern="^[^%&$]*$"> <!-- Champ de saisie pour le prénom ne contien pas % & $ -->
+                        </label>
+                        <label>
+                            <span>Téléphone :</span>
+                            <input type="tel" name="telephone" required maxlength="32" pattern="^[^%&$]*$" placeholder="+216 99 99 99 99"> <!-- Champ de saisie pour le téléphone avec une expression régulière pour la validation ne contien pas % & $ -->
+                        </label>
+                        <label>
+                            <span>Email :</span>
+                            <input type="email" name="email" pattern="^[a-zA-Z0-9._+\-]+@enit\.utm\.tn$"> <!-- Champ de saisie pour l'e-mail avec une expression régulière pour la validation qui doit contenir @enit.utm.tn -->
+                        </label>
+                        <label>
+                            <span>Date de naissance :</span>
+                            <input type="date" id="dateNaissance" name="dateNaissance" onchange="verifDate(this.value)"> <!-- Champ pour la date de naissance avec un événement onchange pour la vérification -->
+                            <span id="dateError" style="color: red;"></span> <!-- Message d'erreur en cas de date invalide -->
+                        </label>
+                        <label>
+                            <span>Nombre d'enfants :</span>
+                            0 <input type="range" id="enfants" name="enfants" min="0" max="5"> 5 <!-- Champ de sélection du nombre d'enfants avec une plage allant de 0 à 5 -->
+                        </label>
+                    </fieldset>
+                    <button id="Ajouter-client" type="submit">OK</button> <!-- Bouton pour soumettre le formulaire -->
+                </form>
+            </details>
+        </article>
+        <article id="contacts">
+            <header>
+                <h1>Liste des contacts</h1> <!-- Titre de la liste des contacts -->
+            </header>
+            <table>
+                <thead>
+                    <tr>
+                        <th>num.contact</th> <!-- En-tête de colonne pour le numéro de contact -->
+                        <th>Prénom</th> <!-- En-tête de colonne pour le prénom -->
+                        <th>Nom</th> <!-- En-tête de colonne pour le nom -->
+                        <th>Téléphone</th> <!-- En-tête de colonne pour le téléphone -->
+                        <th>Email</th> <!-- En-tête de colonne pour l'e-mail -->
+                        <th>Date de naissance</th> <!-- En-tête de colonne pour la date de naissance -->
+                        <th>Nombre enfants</th> <!-- En-tête de colonne pour le nombre d'enfants -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <!-- Lignes de la liste des contacts seront ajoutées ici dynamiquement -->
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <p>entrer le numero de contact à supprimer</p> <!-- Instruction pour entrer le numéro de contact à supprimer -->
+                <input type="text" id="number"> <!-- Champ de saisie pour le numéro de contact -->
+                <div id="trash-can">
+                    <img src="poubelle.png" id="" alt="Trash Can"> <!-- Icône de la poubelle pour supprimer un contact -->
+                </div>
+                <audio id="deleteSound" src="PoubelleSound.mp3" preload="auto"></audio> <!-- Élément audio pour jouer un son de suppression -->
+            </div>
+        </article>
+    </section>
+
+    <footer>Enit - Formation HTML5 </footer> <!-- Pied de page avec une information de formation -->
+</body>
+</html>
